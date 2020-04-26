@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Character from './model/Character';
 
-function App() {
-  return (
-    <h1>Olorin</h1>
+const App = () => {
+
+  const initialValue = [
+    {
+      name: 'Frodo'
+    },
+    {
+      name: 'Legolas'
+    },
+    {
+      name: 'Jimli'
+    }
+  ]
+
+  const [characters, setCharacters] = useState<Character[]>(initialValue as Character[]);
+
+  return(
+    <>
+      <h1>Character List</h1>
+
+      <ul>
+        {
+          characters.map((character, index) => (
+            <li key={index}>{character.name}</li>
+          ))
+        }
+      </ul>
+    </>
   );
 }
 
